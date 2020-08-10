@@ -66,3 +66,33 @@ public:
     }
 };
 };
+
+class MedianFinder {
+public:
+    /** initialize your data structure here. */
+    ordered_multiset<int> tree;
+    MedianFinder() {
+        
+    }
+    
+    void addNum(int num) {
+        tree.insert(num);
+    }
+    
+    double findMedian() {
+        int n = tree.size();
+        if(n == 0)
+        {
+            return 0;
+        }
+        double ret;
+        if(n%2)
+        {
+            ret = *tree.find_by_order(n/2);
+        }
+        else {
+            ret = (double)*tree.find_by_order(n/2) + (double)*tree.find_by_order(n/2-1);
+        }
+        return ret;
+    }
+};

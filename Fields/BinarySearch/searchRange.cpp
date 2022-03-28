@@ -8,7 +8,7 @@ public:
             return {-1, -1};
         }
 
-        //lower_bound
+        //lower_bound more than can be equal
         int l = 0; 
         int r = nums.size();
         while(r-l >= 1) {
@@ -25,7 +25,7 @@ public:
         }
         int left = l;
 
-        //upper_bound
+        //upper_bound more than, so if you want to find it, you should --
         l = 0; 
         r = nums.size();
         while(r-l >= 1) {

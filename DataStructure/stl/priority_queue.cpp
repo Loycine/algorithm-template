@@ -12,6 +12,10 @@ public:
         x = xx;
         y = yy;
     }
+
+    bool operator < (const Point& another) const {
+        return x < another.x;
+    }
 };
 
 class Comparator
@@ -28,14 +32,24 @@ int main()
     priority_queue<int> maxHeap;
     priority_queue<int, vector<int>, greater<int> > minHeap;
     priority_queue<Point, vector<Point>, Comparator> selfDefineDSHeap;
+    priority_queue<Point> selfDefineDSHeapByOperatorReload;
 
-    for(int i=1; i<=5; i++)
+    for(int i=1; i<=5; i++) {
         selfDefineDSHeap.push(Point(i, i+1));
+        selfDefineDSHeapByOperatorReload.push(Point(i, i+1));
+    }
     
     while(!selfDefineDSHeap.empty())
     {
         auto t = selfDefineDSHeap.top();
         cout << t.x << " " << t.y << "\n";
         selfDefineDSHeap.pop();
+    }
+
+    while(!selfDefineDSHeapByOperatorReload.empty())
+    {
+        auto t = selfDefineDSHeapByOperatorReload.top();
+        cout << t.x << " " << t.y << "\n";
+        selfDefineDSHeapByOperatorReload.pop();
     }
 }
